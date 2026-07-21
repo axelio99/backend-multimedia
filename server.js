@@ -20,21 +20,6 @@ server.get('/mahasiswa', async (req, res) => {
     }
 });
 
-// server.get('/mahasiswa/:nim', (req, res) => {
-//     const mahasiswaNim = req.params.nim;
-//     const dataKetemu = dataMahasiswa.find((mhs) => mhs.nim == mahasiswaNim);
-//     if(dataKetemu){
-//         res.json({
-//             message: 'Data mahasiswa berhasil ditemukan!',
-//             data: dataKetemu
-//         });
-//     } else {
-//         res.json({
-//             message: 'Data mahasiswa tidak ditemukan!'
-//         });
-//     }
-// });
-
 server.get('/mahasiswa/:nim', async (req, res) => {
     try {
         const mahasiswaNim = req.params.nim;
@@ -56,25 +41,6 @@ server.get('/mahasiswa/:nim', async (req, res) => {
         });
     }
 });
-
-// server.post('/mahasiswa', (req, res) => {
-//     const namaMahasiswa = req.body.nama;
-//     const nimMahasiswa = req.body.nim;
-//     const prodiMahasiswa = req.body.prodi
-    
-//     const mahasiswaBaru = {
-//         nama : namaMahasiswa,
-//         nim : nimMahasiswa,
-//         prodi : prodiMahasiswa
-//     };
-
-//     dataMahasiswa.push(mahasiswaBaru);
-
-//     res.json({
-//         message: `Berhasil menambahkan mahasiswa baru bernama ${namaMahasiswa} dengan nim ${nimMahasiswa}`,
-//         dataDiterima: req.body
-//     });
-// });
 
 server.post('/mahasiswa', async (req, res) => {
     const { id, nama, nim, prodi, umur } = req.body;
@@ -115,8 +81,6 @@ server.post('/mahasiswa', async (req, res) => {
         });
     }
 });
-
-// menyalakan server
 
 server.listen(port, () => {
     console.log(`Server berjalan di http://localhost:${port}`);
