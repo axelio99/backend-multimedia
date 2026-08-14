@@ -1,0 +1,31 @@
+services:
+  postgres-db:
+    image: postgres:16-alpine
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: app_database
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: express-app
+    ports:
+      - "8080:8080"
+    environment:
+      DATABASE_URL: postgres://admin:password123@postgres-db:5432/app_database
+      PORT: 8080
+      JWT_SECRET: 4ce4b7fe323f87a98b54b0e2fb6004850fde4a4c8a288d0c6f8f66c29cb6f9a7390370ebafc97272548d402340274879dad6ea203ea0353000827849cfd62860
+    depends_on:
+      - postgres-db
+
+volumes:
+  pgdata:
+
+networks:
+  app-network:
