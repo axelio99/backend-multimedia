@@ -1,4 +1,4 @@
-import bcrypt, { hash } from "bcrypt";
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { db } from "../config/index.js";
 import { users } from "../models/schema.js"
@@ -30,12 +30,12 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
     try {
-        const { nama, email, password } = req.body;
+        const { email, password } = req.body;
 
         const userResult = await db.select().from(users).where(eq(users.email, email));
 
         if (userResult.length === 0) {
-            return req.status(401).json({ success: false, message: "Email atau password salah" });
+            return res.status(401).json({ success: false, message: "Email atau password salah" });
         }
 
         const user = userResult[0];
