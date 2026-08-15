@@ -17,7 +17,7 @@ Sebelum menjalankan proyek ini, pastikan kamu sudah menginstal:
 ```bash
   docker compose up -d --build
 ```
-4. Tunggu beberapa saat hingga aplikasi berjalan sepenuhnya di | http://localhost:3000 | (atau port yang kamu atur di | .env |).
+4. Tunggu beberapa saat hingga aplikasi berjalan sepenuhnya di `http://localhost:3000` (atau port yang kamu atur di `.env`).
 5. Buka aplikasi Postman.
 6. Lakukan _request_ ke _endpoint_ autentikasi untuk melakukan _login_ atau _register_ agar mendapatkan token JWT.
 7. Salin token JWT yang didapat, lalu tempelkan pada tab **Authorization** dengan memilih tipe **Bearer Token** di Postman untuk mengakses _endpoint_ manajemen data mahasiswa.
